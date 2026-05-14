@@ -17,17 +17,21 @@ def main():
     print(f"Screen height: {constants.SCREEN_HEIGHT}")
 
     user = Player(constants.SCREEN_WIDTH/2, constants.SCREEN_HEIGHT/2)
+    dt=0
 
     while True:
         logger.log_state()
+        user.update(dt)
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
         screen.fill("black")
+        
         user.draw(screen)
         pygame.display.flip()
         dt = clk.tick(60)/1000
+        
         
 
 
