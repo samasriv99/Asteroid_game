@@ -2,6 +2,10 @@ import pygame
 import constants
 import logger
 from logger import log_state
+import circleshape
+from circleshape import CircleShape
+import player
+from player import Player
 
 def main():
     pygame.init()
@@ -12,12 +16,16 @@ def main():
     print(f"Screen width: {constants.SCREEN_WIDTH}")
     print(f"Screen height: {constants.SCREEN_HEIGHT}")
 
+    user = Player(constants.SCREEN_WIDTH/2, constants.SCREEN_HEIGHT/2)
+
     while True:
         logger.log_state()
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
         screen.fill("black")
+        user.draw(screen)
         pygame.display.flip()
         dt = clk.tick(60)/1000
         
